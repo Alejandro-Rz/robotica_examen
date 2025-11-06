@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Robot 2GDL - Robótica</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Control de Robot Planar 2GDL</h1>
+    <div class="subtitle">Examen Parcial de Robótica</div>
+    
+    <div class="container">
+        <!-- Canvas para el robot -->
+        <div class="robot-container">
+            <canvas id="robotCanvas" width="600" height="500"></canvas>
+            <div class="coordinates">Posición actual: <span id="currentPos">x: 0.14, y: 0.14</span></div>
+        </div>
+        
+        <!-- Panel de controles -->
+        <div class="controls">
+            <h3>Control de Posición</h3>
+            <div class="input-group">
+                <label for="xd">Coordenada X deseada (m):</label>
+                <input type="number" id="xd" step="0.01" value="0.14" min="-0.3" max="0.3">
+            </div>
+            <div class="input-group">
+                <label for="yd">Coordenada Y deseada (m):</label>
+                <input type="number" id="yd" step="0.01" value="0.14" min="-0.3" max="0.3">
+            </div>
+            
+            <button id="moveBtn" class="btn-primary">Mover a posición</button>
+            <button id="homeBtn" class="btn-secondary">Posición inicial (0.14, 0.14)</button>
+            
+            <div id="alertMessage" class="alert"></div>
+            
+            <div class="robot-info">
+                <h4>Información del Robot</h4>
+                <p>Eslabones: l₁ = l₂ = 0.12 m</p>
+                <p>Pinza: 0.02 m</p>
+                <p>Ángulos: θ₁ = <span id="theta1">90</span>°, θ₂ = <span id="theta2">0</span>°</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gráficas de trayectorias -->
+    <div class="charts">
+        <h3>Trayectorias Articulares</h3>
+        <div class="chart-container">
+            <canvas id="q1Chart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="q2Chart"></canvas>
+        </div>
+    </div>
+
+    <script src="robot.js"></script>
+</body>
+</html>
